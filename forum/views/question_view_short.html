@@ -1,0 +1,21 @@
+<div class='shortquestion'>
+    <span class='title'>
+    	<a href="@@question/view/{{$question->getId()}}@@">{{$question->getTitle()}}</a> by {{$question->getUserFirstName()}} {{$question->getUserLastName()}}
+    </span>
+    <span class='date'>Posted on: {{$question->getPostedOn()}}</span>
+    [[
+    	$tags = $question->getTags(); 
+    	$pattern = '/[ ]/';
+	
+		$tags = preg_split($pattern, $tags);
+    	
+    	if (isset($tags) && $question->getTags() != '') : 
+    ]]
+    <span class='tags'>Filed under: 
+    	[[ foreach($tags as $tag) :]]
+    		<a href="@@tags/view/{{$tag}}@@">{{$tag}}</a>
+    	[[ endforeach; ]]	
+    </span>
+    [[ endif; ]]
+    <span class='question'>[[ echo(markdown(substr($question->getContent(), 0, 200) . '...')); ]]</span>
+</div>

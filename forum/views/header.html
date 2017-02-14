@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>{{$title}}</title>
+        <link rel="stylesheet" href="@@static/style.css@@" />
+    </head>
+    <body>
+        <div class="content">
+        [[ include_once 'include/util.inc'; ]]
+        [[ if (isLoggedIn()) : ]]
+        <span class="username">Welcome, 
+        [[ if (isset($_SESSION['username'])) :  ]]
+        	[[ echo $_SESSION['username']; ]]
+        [[ endif; ]]
+        </span>	
+        <ul class="login">
+	        <!--Session Log in output-->
+	    	<li><a href="@@index@@">Home</a></li>
+	    	<li><a href="@@user/view/{{$_SESSION['user_id']}}@@">MyProfile</a></li>
+	    	<li><a href="@@logout@@">Log out</a></li>
+	    </ul>	
+        [[ else : ]]
+        <ul class="login">
+        	<li><a href="@@index@@">Home</a></li>
+	    	<li><a href="@@user/register@@">Register</a></li>
+	    	<li><a href="@@login@@">Log in</a></li>
+	    </ul>	
+        [[ endif; ]]	
+        </ul>
+		<div class="clear"></div>
