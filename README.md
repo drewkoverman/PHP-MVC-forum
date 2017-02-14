@@ -4,6 +4,7 @@ PHP MVC user forum project that implements RESTful URLs and CRUD (Create Read Up
 RESTful URL Template: 
 
 /App/question/view/{{question_id}}
+
 /App/question/edit/{{question_id}}
 
 /App/question/delete/{{question_id}}
